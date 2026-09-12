@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fill the form to add author</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="first_name" placeholder="e.g Ali"><br>
+        <input type="text" name="last_name" placeholder="e.g Aliev"><br>
+        <input type="date" name="b_date"><br>
+        <button type="submit">save</button>
+        <button type="reset">clear</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Books below</h1>
+    {% for o in objects %}
+    book title: {{ o.title }}<br>    
+    book author: {{ o.author }}<br>    
+    book pages: {{ o.pages }}<br>    
+    book price: {{ o.price }}<br>    
+    book description: <b>{{ o.description }}</b><br>
+    <button>delete</button>
+    <a href="{% url 'add_book' %}"><button>edit</button></a>
+    <hr>    
+    {% endfor %}
+
+</body>
+</html>
