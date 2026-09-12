@@ -8,7 +8,7 @@
 <body>
     <h1>Books below</h1>
     {% for b in books %}
-    <a href="{% url 'books_detail/' b.pk %}">book title: {{ b.title }}</a><br>    
+    <a href="{% url 'books_detail' b.pk %}">book title: {{ b.title }}</a><br>    
     {% endfor %}
 </body>
 </html>

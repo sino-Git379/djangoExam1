@@ -7,16 +7,16 @@
 </head>
 <body>
     <h1>Books below</h1>
-    {% for o in objects %}
-    book title: {{ o.title }}<br>    
-    book author: {{ o.author }}<br>    
-    book pages: {{ o.pages }}<br>    
-    book price: {{ o.price }}<br>    
-    book description: <b>{{ o.description }}</b><br>
-    <button>delete</button>
-    <a href="{% url 'add_book' %}"><button>edit</button></a>
-    <hr>    
-    {% endfor %}
+    book title: {{ object.title }}<br>    
+    book author: {{ object.author }}<br>    
+    book pages: {{ object.pages }}<br>    
+    book price: {{ object.price }}<br>    
+    book description: <b>{{ object.description }}</b><br>
+    <form action="{% url 'book_delete' object.pk %}" method="POST" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit">delete</button>
+    </form>
+<a href="{% url 'update' object.pk %}"><button>edit</button></a>    <hr>    
 
 </body>
 </html>

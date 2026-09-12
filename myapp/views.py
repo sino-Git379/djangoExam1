@@ -43,23 +43,24 @@ def add_book(request):
 def book_update(request, pk):
     authors = Author.objects.all()
     books = Book.objects.get(pk=pk)
+    
     if request.method == 'POST':
-        Book.objects.create(
-            title = request.POST.get('title'),
-            author = request.POST.get('author'),
-            pages = request.POST.get('pages'),
-            price = request.POST.get('price'),
-            description = request.POST.get('description')
-        )
+        books.title = request.POST.get('title')
+        books.author = request.POST.get('author')
+        books.pages = request.POST.get('pages')
+        books.price = request.POST.get('price')
+        books.description = request.POST.get('description')
+        books.save() 
+        
         return redirect('books')
-    return render(request, 'add_books.html',)
+        
+    return render(request, 'add_books.html', {'authors': authors, 'book': books})
 
 def book_delete(request, pk):
     books = Book.objects.get(pk=pk)
-    if request.method == 'POST':
-        books.delete()
-        return redirect('books')
-    return render(request, 'books.html')
+    books.delete()
+    return redirect('books')
+    
 
 
 
