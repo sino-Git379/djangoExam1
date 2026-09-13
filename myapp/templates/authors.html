@@ -4,14 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authors</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #0f172a;
+            text-align: center;
+        }
+
+        .authors-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .author-card {
+            background-color: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 14px 18px;
+            border-radius: 10px;
+            line-height: 1.5;
+        }
+
+        .author-card p {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .author-card strong {
+            color: #0284c7;
+        }
+
+        .add-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            background-color: #16a34a;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+
+        .add-btn:hover {
+            background-color: #15803d;
+        }
+    </style>
 </head>
 <body>
-    <h1>Authors below</h1>
-    {% for aut in authors %}
-    name: {{ aut.first_name }}<br>
-    last_name: {{ aut.last_name }}<br>
-    birth-date: {{ aut.b_date }}
-    <hr>
-    {% endfor %}
+    <div class="card">
+        <h1>Authors below</h1>
+
+        <div class="authors-list">
+            {% for aut in authors %}
+                <div class="author-card">
+                    <p><strong>name:</strong> {{ aut.first_name }}</p>
+                    <p><strong>last_name:</strong> {{ aut.last_name }}</p>
+                    <p><strong>birth-date:</strong> {{ aut.b_date }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <a class="add-btn" href="{% url "add_author" %}">add</a>
+    </div>
 </body>
 </html>

@@ -3,17 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Author</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 24px;
+            color: #0f172a;
+            text-align: center;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #f8fafc;
+            color: #0f172a;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #0284c7;
+            background-color: #ffffff;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-submit {
+            background-color: #16a34a;
+            color: #ffffff;
+        }
+
+        .btn-submit:hover {
+            background-color: #15803d;
+        }
+
+        .btn-reset {
+            background-color: #e2e8f0;
+            color: #475569;
+        }
+
+        .btn-reset:hover {
+            background-color: #cbd5e1;
+        }
+    </style>
 </head>
 <body>
-    <h1>Fill the form to add author</h1>
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="first_name" placeholder="e.g Ali"><br>
-        <input type="text" name="last_name" placeholder="e.g Aliev"><br>
-        <input type="date" name="b_date"><br>
-        <button type="submit">save</button>
-        <button type="reset">clear</button>
-    </form>
+    <div class="card">
+        <h1>Fill the form to add author</h1>
+
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            
+            <input class="input-field" type="text" name="first_name" placeholder="First Name (e.g Ali)">
+            <input class="input-field" type="text" name="last_name" placeholder="Last Name (e.g Aliev)">
+            <input class="input-field" type="date" name="b_date">
+            
+            <div class="btn-group">
+                <button type="submit" class="btn btn-submit">save</button>
+                <button type="reset" class="btn btn-reset">clear</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
